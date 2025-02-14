@@ -50,6 +50,23 @@ public class SpellChecker {
      *  prints that value out before returning.
      */
     public boolean binarySpellCheck(String word) {
+        loopCounter = 0;
+        int left = 0;
+        int right = dictionary.size() - 1;
+        while (left <= right) {
+            loopCounter++;
+            int middle = (left + right) / 2;
+            if (dictionary.get(middle).equals(word)) {
+                System.out.println("-- BINARY SEARCH: Number of words checked (loop iterations): " + loopCounter);
+                return true;
+            }
+            if (dictionary.get(middle).compareTo(word) < 0) {
+                left = middle + 1;
+            } else {
+                right = middle - 1;
+            }
+        }
+        System.out.println("-- bINARY SEARCH: Number of words checked (loop iterations): " + loopCounter);
         return false;
     }
 
